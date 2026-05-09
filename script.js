@@ -15,6 +15,7 @@ const lightboxClose = document.getElementById("lightboxClose");
 const musicToggle = document.getElementById("musicToggle");
 const musicLabel = document.getElementById("musicLabel");
 const bgMusic = document.getElementById("bgMusic");
+const LIGHTBOX_PLACEHOLDER_NOTE = "(placeholder) — replace this image when ready.";
 
 let musicFadeFrame;
 
@@ -105,7 +106,7 @@ function triggerSurprise() {
 
 function openLightbox(src, title) {
   lightboxImage.src = src;
-  lightboxCaption.textContent = `${title} (placeholder) — replace this image when ready.`;
+  lightboxCaption.textContent = `${title} ${LIGHTBOX_PLACEHOLDER_NOTE}`;
   lightbox.hidden = false;
   document.body.style.overflow = "hidden";
 }
@@ -179,9 +180,14 @@ function bindEvents() {
 }
 
 function init() {
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const lowPowerDevice = (navigator.deviceMemory && navigator.deviceMemory <= 4) || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
+  const particleCount = reducedMotion || lowPowerDevice ? 18 : 32;
+  const petalCount = reducedMotion || lowPowerDevice ? 10 : 18;
+
   startIntroSequence();
-  createAmbient("particle", 32, ambientLayer);
-  createAmbient("petal", 18, petalLayer);
+  createAmbient("particle", particleCount, ambientLayer);
+  createAmbient("petal", petalCount, petalLayer);
   revealOnScroll();
   animateCursorGlow();
   setupMemoryPreview();
