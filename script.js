@@ -101,13 +101,21 @@ function toggleMusic() {
 function revealLetter() {
   fullLetter.hidden = false;
   readLetterButton.disabled = true;
+  readLetterButton.setAttribute("aria-disabled", "true");
+  readLetterButton.setAttribute("aria-expanded", "true");
   readLetterButton.textContent = "Full Letter Opened";
+  fullLetter.setAttribute("tabindex", "-1");
+  fullLetter.focus();
 }
 
 function openGallery() {
   photoGallery.hidden = false;
   openGalleryButton.disabled = true;
+  openGalleryButton.setAttribute("aria-disabled", "true");
+  openGalleryButton.setAttribute("aria-expanded", "true");
   openGalleryButton.textContent = "Photo Gallery Opened";
+  photoGallery.setAttribute("tabindex", "-1");
+  photoGallery.focus();
 }
 
 function burstSurprise() {

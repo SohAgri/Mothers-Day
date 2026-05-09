@@ -41,7 +41,9 @@
         <p>
           You made every hard day softer, every fear smaller, and every dream brighter. Thank you for loving me in a way only a mother can.
         </p>
-        <button class="button button-soft" id="readLetterButton" type="button">Read Full Letter</button>
+        <button class="button button-soft" id="readLetterButton" type="button" aria-controls="fullLetter" aria-expanded="false">
+          Read Full Letter
+        </button>
         <article class="letter" id="fullLetter" hidden>
           <p>Dear Maa,</p>
           <p>
@@ -60,7 +62,9 @@
       <section class="memories reveal" id="memories">
         <h2>Memories & Photos</h2>
         <p>Open the gallery and relive the smiles, festivals, and little moments we love.</p>
-        <button class="button" id="openGalleryButton" type="button">Open Photo Gallery</button>
+        <button class="button" id="openGalleryButton" type="button" aria-controls="photoGallery" aria-expanded="false">
+          Open Photo Gallery
+        </button>
         <div class="gallery" id="photoGallery" hidden>
           <figure class="memory-card">
             <img src="assets/photos/placeholder.svg" alt="Childhood memory" loading="lazy" />
