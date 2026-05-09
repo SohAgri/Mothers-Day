@@ -11,6 +11,7 @@ const musicLabel = document.getElementById("musicLabel");
 const bgMusic = document.getElementById("bgMusic");
 
 let musicFadeFrame;
+const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 function hideOpeningOverlay() {
   window.setTimeout(() => openingOverlay.classList.add("hide"), 1100);
@@ -18,8 +19,7 @@ function hideOpeningOverlay() {
 }
 
 function createPetals() {
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const count = reducedMotion ? 8 : 14;
+  const count = reducedMotionQuery.matches ? 8 : 14;
   const fragment = document.createDocumentFragment();
 
   for (let i = 0; i < count; i += 1) {
@@ -33,6 +33,13 @@ function createPetals() {
   }
 
   petalLayer.appendChild(fragment);
+}
+
+function refreshPetalsOnMotionChange() {
+  reducedMotionQuery.addEventListener("change", () => {
+    petalLayer.innerHTML = "";
+    createPetals();
+  });
 }
 
 function revealSections() {
@@ -141,6 +148,7 @@ function bindEvents() {
 function init() {
   hideOpeningOverlay();
   createPetals();
+  refreshPetalsOnMotionChange();
   revealSections();
   bindEvents();
 }
