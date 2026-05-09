@@ -1,53 +1,42 @@
-const intro = document.getElementById("cinematicIntro");
-const introLines = [...document.querySelectorAll("[data-intro-line]")];
-const enterExperience = document.getElementById("enterExperience");
-const ambientLayer = document.getElementById("ambientLayer");
+const openingOverlay = document.getElementById("openingOverlay");
 const petalLayer = document.getElementById("petalLayer");
-const cursorGlow = document.getElementById("cursorGlow");
+const readLetterButton = document.getElementById("readLetterButton");
+const fullLetter = document.getElementById("fullLetter");
+const openGalleryButton = document.getElementById("openGalleryButton");
+const photoGallery = document.getElementById("photoGallery");
 const surpriseButton = document.getElementById("surpriseButton");
 const surpriseMessage = document.getElementById("surpriseMessage");
-const lightFlash = document.getElementById("lightFlash");
-const memoryCards = [...document.querySelectorAll(".memory-card")];
-const lightbox = document.getElementById("lightbox");
-const lightboxImage = document.getElementById("lightboxImage");
-const lightboxCaption = document.getElementById("lightboxCaption");
-const lightboxClose = document.getElementById("lightboxClose");
 const musicToggle = document.getElementById("musicToggle");
 const musicLabel = document.getElementById("musicLabel");
 const bgMusic = document.getElementById("bgMusic");
-const LIGHTBOX_PLACEHOLDER_NOTE = "(placeholder) — replace this image when ready.";
 
 let musicFadeFrame;
 
-function startIntroSequence() {
-  introLines.forEach((line, index) => {
-    setTimeout(() => line.classList.add("visible"), 850 * (index + 1));
-  });
-  setTimeout(() => enterExperience.classList.add("visible"), 850 * (introLines.length + 1));
+function hideOpeningOverlay() {
+  window.setTimeout(() => openingOverlay.classList.add("hide"), 1100);
+  window.setTimeout(() => openingOverlay.remove(), 1800);
 }
 
-function closeIntro() {
-  intro.classList.add("hidden");
-}
-
-function createAmbient(type, count, layer) {
+function createPetals() {
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const count = reducedMotion ? 8 : 14;
   const fragment = document.createDocumentFragment();
+
   for (let i = 0; i < count; i += 1) {
-    const item = document.createElement("span");
-    item.className = type;
-    item.style.setProperty("--x", `${Math.random() * 100}vw`);
-    item.style.setProperty("--dx", `${Math.random() * 18 - 9}vw`);
-    item.style.setProperty("--dur", `${Math.random() * 12 + 10}s`);
-    const size = type === "particle" ? Math.random() * 8 + 6 : Math.random() * 6 + 8;
-    item.style.width = `${size}px`;
-    item.style.height = `${size}px`;
-    item.style.animationDelay = `${Math.random() * 8}s`;
-    fragment.appendChild(item);
+    const petal = document.createElement("span");
+    petal.className = "petal";
+    petal.style.setProperty("--x", `${Math.random() * 100}vw`);
+    petal.style.setProperty("--dx", `${Math.random() * 20 - 10}vw`);
+    petal.style.setProperty("--dur", `${Math.random() * 6 + 8}s`);
+    petal.style.animationDelay = `${Math.random() * 5}s`;
+    fragment.appendChild(petal);
   }
-  layer.appendChild(fragment);
+
+  petalLayer.appendChild(fragment);
 }
 
-function revealOnScroll() {
+function revealSections() {
+  const targets = document.querySelectorAll(".reveal");
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -60,84 +49,17 @@ function revealOnScroll() {
     { threshold: 0.2 }
   );
 
-  document.querySelectorAll(".section-reveal").forEach((section) => observer.observe(section));
-}
-
-function animateCursorGlow() {
-  window.addEventListener("pointermove", (event) => {
-    cursorGlow.style.left = `${event.clientX}px`;
-    cursorGlow.style.top = `${event.clientY}px`;
-  });
-}
-
-function makeHeartsBurst() {
-  const bounds = surpriseButton.getBoundingClientRect();
-  for (let i = 0; i < 18; i += 1) {
-    const heart = document.createElement("span");
-    heart.className = "heart";
-    heart.style.left = `${bounds.left + bounds.width / 2 + (Math.random() * 80 - 40)}px`;
-    heart.style.top = `${bounds.top + window.scrollY + bounds.height / 2 + (Math.random() * 40 - 20)}px`;
-    heart.style.animationDelay = `${Math.random() * 0.28}s`;
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 2200);
-  }
-
-  for (let i = 0; i < 20; i += 1) {
-    const petal = document.createElement("span");
-    petal.className = "petal";
-    petal.style.setProperty("--x", `${bounds.left + bounds.width / 2}px`);
-    petal.style.setProperty("--dx", `${Math.random() * 50 - 25}px`);
-    petal.style.setProperty("--dur", `${Math.random() * 1.7 + 1.3}s`);
-    petal.style.left = `${bounds.left + bounds.width / 2}px`;
-    petal.style.top = `${bounds.top + window.scrollY + bounds.height / 2}px`;
-    petal.style.opacity = "1";
-    petal.style.animationName = "lift";
-    document.body.appendChild(petal);
-    setTimeout(() => petal.remove(), 2100);
-  }
-}
-
-function triggerSurprise() {
-  makeHeartsBurst();
-  surpriseMessage.classList.add("visible");
-  lightFlash.classList.add("active");
-  setTimeout(() => lightFlash.classList.remove("active"), 900);
-}
-
-function openLightbox(src, title) {
-  lightboxImage.src = src;
-  lightboxCaption.textContent = `${title} ${LIGHTBOX_PLACEHOLDER_NOTE}`;
-  lightbox.hidden = false;
-  document.body.style.overflow = "hidden";
-}
-
-function closeLightbox() {
-  lightbox.hidden = true;
-  lightboxImage.removeAttribute("src");
-  document.body.style.overflow = "";
-}
-
-function setupMemoryPreview() {
-  memoryCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      openLightbox(card.dataset.src || "", card.dataset.title || "Memory");
-    });
-  });
-
-  lightboxClose.addEventListener("click", closeLightbox);
-  lightbox.addEventListener("click", (event) => {
-    if (event.target === lightbox) closeLightbox();
-  });
+  targets.forEach((section) => observer.observe(section));
 }
 
 function fadeAudio(targetVolume) {
   cancelAnimationFrame(musicFadeFrame);
   const startVolume = bgMusic.volume;
-  const duration = 700;
-  const startTime = performance.now();
+  const duration = 500;
+  const start = performance.now();
 
-  const update = (time) => {
-    const progress = Math.min((time - startTime) / duration, 1);
+  const update = (now) => {
+    const progress = Math.min((now - start) / duration, 1);
     bgMusic.volume = startVolume + (targetVolume - startVolume) * progress;
     if (progress < 1) {
       musicFadeFrame = requestAnimationFrame(update);
@@ -160,37 +82,66 @@ function toggleMusic() {
       .catch(() => {
         musicLabel.textContent = "Tap To Play";
       });
-  } else {
-    fadeAudio(0);
-    setTimeout(() => bgMusic.pause(), 750);
-    musicToggle.setAttribute("aria-pressed", "false");
-    musicLabel.textContent = "Play Music";
+    return;
   }
+
+  fadeAudio(0);
+  window.setTimeout(() => bgMusic.pause(), 520);
+  musicToggle.setAttribute("aria-pressed", "false");
+  musicLabel.textContent = "Play Music";
+}
+
+function revealLetter() {
+  fullLetter.hidden = false;
+  readLetterButton.disabled = true;
+  readLetterButton.textContent = "Full Letter Opened";
+}
+
+function openGallery() {
+  photoGallery.hidden = false;
+  openGalleryButton.disabled = true;
+  openGalleryButton.textContent = "Photo Gallery Opened";
+}
+
+function burstSurprise() {
+  const rect = surpriseButton.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + window.scrollY + rect.height / 2;
+
+  for (let i = 0; i < 22; i += 1) {
+    const heart = document.createElement("span");
+    heart.className = "burst-heart";
+    heart.style.left = `${centerX + (Math.random() * 110 - 55)}px`;
+    heart.style.top = `${centerY + (Math.random() * 40 - 20)}px`;
+    heart.style.animationDelay = `${Math.random() * 0.25}s`;
+    document.body.appendChild(heart);
+    window.setTimeout(() => heart.remove(), 1700);
+  }
+
+  for (let i = 0; i < 28; i += 1) {
+    const petal = document.createElement("span");
+    petal.className = "burst-petal";
+    petal.style.left = `${centerX + (Math.random() * 130 - 65)}px`;
+    petal.style.top = `${centerY + (Math.random() * 36 - 18)}px`;
+    petal.style.animationDelay = `${Math.random() * 0.2}s`;
+    document.body.appendChild(petal);
+    window.setTimeout(() => petal.remove(), 1450);
+  }
+
+  surpriseMessage.textContent = "You are the heart of our family.";
 }
 
 function bindEvents() {
-  enterExperience.addEventListener("click", closeIntro);
-  surpriseButton.addEventListener("click", triggerSurprise);
   musicToggle.addEventListener("click", toggleMusic);
-  window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !lightbox.hidden) {
-      closeLightbox();
-    }
-  });
+  readLetterButton.addEventListener("click", revealLetter);
+  openGalleryButton.addEventListener("click", openGallery);
+  surpriseButton.addEventListener("click", burstSurprise);
 }
 
 function init() {
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const lowPowerDevice = (navigator.deviceMemory && navigator.deviceMemory <= 4) || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
-  const particleCount = reducedMotion || lowPowerDevice ? 18 : 32;
-  const petalCount = reducedMotion || lowPowerDevice ? 10 : 18;
-
-  startIntroSequence();
-  createAmbient("particle", particleCount, ambientLayer);
-  createAmbient("petal", petalCount, petalLayer);
-  revealOnScroll();
-  animateCursorGlow();
-  setupMemoryPreview();
+  hideOpeningOverlay();
+  createPetals();
+  revealSections();
   bindEvents();
 }
 

@@ -3,167 +3,108 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Happy Mother's Day Maa ❤️ | Sohum</title>
-    <meta
-      name="description"
-      content="A cinematic Mother's Day tribute from Sohum to his Maa for 2026."
-    />
+    <title>Happy Mother's Day Maa ❤️</title>
+    <meta name="description" content="A simple and emotional Mother's Day tribute." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="cursorGlow" aria-hidden="true"></div>
-    <div class="ambient-layer" id="ambientLayer" aria-hidden="true"></div>
-    <div class="petal-layer" id="petalLayer" aria-hidden="true"></div>
-
-    <div class="cinematic-intro" id="cinematicIntro" role="dialog" aria-live="polite">
-      <div class="intro-backdrop"></div>
-      <div class="intro-content">
-        <p class="intro-line" data-intro-line="1">Some people call her mother...</p>
-        <p class="intro-line" data-intro-line="2">I call her my world.</p>
-        <h1 class="intro-title" data-intro-line="3">Happy Mother's Day Maa ❤️</h1>
-        <button class="intro-enter" id="enterExperience" type="button">Enter My Tribute</button>
-      </div>
+    <div class="opening-overlay" id="openingOverlay" aria-hidden="true">
+      <p class="opening-subtitle">A small gift made with love.</p>
+      <h1>Happy Mother's Day Maa ❤️</h1>
     </div>
 
-    <button class="music-toggle" id="musicToggle" type="button" aria-pressed="false" aria-label="Play background music">
-      <span class="music-icon" aria-hidden="true">♪</span>
+    <div class="petal-layer" id="petalLayer" aria-hidden="true"></div>
+
+    <button class="music-toggle" id="musicToggle" type="button" aria-pressed="false">
+      <span aria-hidden="true">♪</span>
       <span id="musicLabel">Play Music</span>
     </button>
     <audio id="bgMusic" preload="none" loop>
-      <!-- Replace with your own instrumental track in assets/audio -->
       <source src="assets/audio/mother-day-theme.mp3" type="audio/mpeg" />
     </audio>
 
-    <header class="hero section-reveal" id="top">
-      <div class="hero-light"></div>
-      <nav class="hero-nav">
-        <a href="#letter">Read My Letter</a>
-        <a href="#memories">Our Memories</a>
-        <a href="#surprise">A Surprise For You</a>
-      </nav>
-      <div class="hero-content">
-        <p class="eyebrow">Mother's Day 2026</p>
-        <h1>Happy Mother's Day Maa ❤️</h1>
-        <p>To the woman whose love built my entire world.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#letter">Read My Letter</a>
-          <a class="btn btn-secondary" href="#memories">Our Memories</a>
-          <a class="btn btn-glow" href="#surprise">A Surprise For You</a>
-        </div>
-      </div>
-    </header>
-
     <main>
-      <section class="story section-reveal" id="story">
-        <div class="section-shell">
-          <h2>Every chapter of me begins with you</h2>
+      <section class="hero reveal visible" id="hero">
+        <p class="eyebrow">Mother's Day</p>
+        <h1>Happy Mother's Day Maa ❤️</h1>
+        <p class="lead">A small gift made with love.</p>
+      </section>
+
+      <section class="note reveal" id="note">
+        <h2>For You, Maa</h2>
+        <p>
+          You made every hard day softer, every fear smaller, and every dream brighter. Thank you for loving me in a way only a mother can.
+        </p>
+        <button class="button button-soft" id="readLetterButton" type="button">Read Full Letter</button>
+        <article class="letter" id="fullLetter" hidden>
+          <p>Dear Maa,</p>
           <p>
-            From tiny hands you held through uncertain steps, to every difficult year you quietly carried,
-            your love has always moved ahead of me like light on a path.
+            Thank you for standing beside me in every chapter of my life. Your patience, strength, and quiet prayers built my confidence and gave me courage.
           </p>
           <p>
-            This tribute is not for one day. It is for every day you put your dreams second, so mine could grow.
+            Even when I could not say what I was feeling, you understood. Even when I failed, you believed. Even when I was afraid, you held me steady.
           </p>
-        </div>
-      </section>
-
-      <section class="letter section-reveal" id="letter">
-        <div class="section-shell">
-          <h2>My Letter To You, Maa</h2>
-          <article class="letter-card">
-            <p>Dear Maa,</p>
-            <p>
-              I have watched you turn ordinary days into safe homes for me. You noticed when I was silent,
-              understood when I could not explain, and stood beside me when life felt heavy.
-            </p>
-            <p>
-              You sacrificed your comfort for my happiness. You stayed strong even during difficult days.
-              Through every fever, every exam night, every fear I hid behind a smile, your care never paused.
-            </p>
-            <p>
-              I still remember childhood moments where your hand on my head made everything feel okay.
-              In the hardest times, your words gave me courage to continue.
-            </p>
-            <p>
-              I may not say it every day, but I love you Maa. Thank you for your patience, your strength,
-              and the kind of love that asks for nothing and gives everything.
-            </p>
-            <p>With all my heart,<br />Sohum</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="memories section-reveal" id="memories">
-        <div class="section-shell">
-          <h2>Our Memory Album</h2>
-          <p class="memories-intro">
-            Placeholder frames are ready. Replace these with real photos in the matching folders anytime.
+          <p>
+            I am who I am because of your love. Today and always, I am grateful for you.
           </p>
-          <div class="memory-grid">
-            <!-- Replace data-src later with real image paths -->
-            <button class="memory-card portrait" data-src="assets/photos/placeholder.svg" data-title="Childhood Memories">
-              <span>Childhood Memories</span>
-              <small>/assets/photos/childhood</small>
-            </button>
-            <button class="memory-card landscape" data-src="assets/photos/placeholder.svg" data-title="Family Moments">
-              <span>Family Moments</span>
-              <small>/assets/photos/family</small>
-            </button>
-            <button class="memory-card landscape" data-src="assets/photos/placeholder.svg" data-title="Festival Photos">
-              <span>Festival Photos</span>
-              <small>/assets/photos/festivals</small>
-            </button>
-            <button class="memory-card portrait" data-src="assets/photos/placeholder.svg" data-title="Emotional Candid Moments">
-              <span>Emotional Candid Moments</span>
-              <small>/assets/photos/candid</small>
-            </button>
-            <button class="memory-card portrait" data-src="assets/photos/placeholder.svg" data-title="Smiling Portraits">
-              <span>Smiling Portraits</span>
-              <small>/assets/photos/portraits</small>
-            </button>
-            <button class="memory-card landscape" data-src="assets/photos/placeholder.svg" data-title="Daily Life Memories">
-              <span>Daily Life Memories</span>
-              <small>/assets/photos/daily</small>
-            </button>
-          </div>
+          <p>With all my heart,<br />Your son</p>
+        </article>
+      </section>
+
+      <section class="memories reveal" id="memories">
+        <h2>Memories & Photos</h2>
+        <p>Open the gallery and relive the smiles, festivals, and little moments we love.</p>
+        <button class="button" id="openGalleryButton" type="button">Open Photo Gallery</button>
+        <div class="gallery" id="photoGallery" hidden>
+          <figure class="memory-card">
+            <img src="assets/photos/placeholder.svg" alt="Childhood memory" loading="lazy" />
+            <figcaption>Childhood Memories</figcaption>
+          </figure>
+          <figure class="memory-card">
+            <img src="assets/photos/placeholder.svg" alt="Family moment" loading="lazy" />
+            <figcaption>Family Moments</figcaption>
+          </figure>
+          <figure class="memory-card">
+            <img src="assets/photos/placeholder.svg" alt="Festival memory" loading="lazy" />
+            <figcaption>Festival Photos</figcaption>
+          </figure>
+          <figure class="memory-card">
+            <img src="assets/photos/placeholder.svg" alt="Smiling portrait" loading="lazy" />
+            <figcaption>Smiling Portraits</figcaption>
+          </figure>
         </div>
       </section>
 
-      <section class="surprise section-reveal" id="surprise">
-        <div class="section-shell">
-          <h2>A Small Surprise For You</h2>
-          <button class="btn btn-surprise" id="surpriseButton" type="button">Click For A Surprise ❤️</button>
-          <div class="surprise-message" id="surpriseMessage" aria-live="polite">
-            <p>You are the heart of this family.</p>
-            <p>Thank you for everything Maa ❤️</p>
-          </div>
-        </div>
+      <section class="special reveal" id="special">
+        <h2>Why You Are So Special</h2>
+        <ul>
+          <li>You give without expecting anything back.</li>
+          <li>You make home feel safe and warm.</li>
+          <li>Your strength inspires us every day.</li>
+          <li>Your love is the reason we smile.</li>
+        </ul>
       </section>
 
-      <section class="ending section-reveal" id="ending">
-        <div class="section-shell">
-          <p>No matter how old I become,<br />I will always remain your child ❤️</p>
-          <p>Happy Mother's Day Maa</p>
-          <p>With endless love,<br />Your son Sohum ❤️</p>
-        </div>
+      <section class="surprise reveal" id="surprise">
+        <h2>A Little Surprise</h2>
+        <button class="button button-glow" id="surpriseButton" type="button">Tap for a Surprise ❤️</button>
+        <p class="surprise-message" id="surpriseMessage" aria-live="polite"></p>
+      </section>
+
+      <section class="thanks reveal" id="thanks">
+        <h2>Thank You, Maa ❤️</h2>
+        <p>
+          No matter how much time passes, I will always be your child.
+          Thank you for everything.
+        </p>
       </section>
     </main>
-
-    <div class="light-flash" id="lightFlash" aria-hidden="true"></div>
-
-    <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" hidden>
-      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close photo view">×</button>
-      <figure>
-        <img id="lightboxImage" alt="Memory preview" />
-        <figcaption id="lightboxCaption"></figcaption>
-      </figure>
-    </div>
 
     <script src="script.js"></script>
   </body>
