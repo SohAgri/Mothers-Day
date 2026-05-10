@@ -26,7 +26,6 @@ body {
   color: var(--ink);
   background: radial-gradient(circle at 20% 0%, #fff9f2 0%, #fde7d9 45%, #f8dfd7 100%);
   min-height: 100vh;
-  min-height: 100dvh;
   overflow-x: hidden;
 }
 
@@ -136,12 +135,18 @@ section {
 
 .hero {
   min-height: 100vh;
-  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 2rem 5vw 3rem;
   background: radial-gradient(circle at 40% 10%, rgba(255, 246, 220, 0.95), rgba(255, 230, 207, 0.82), rgba(243, 201, 173, 0.6));
+}
+
+@supports (height: 100dvh) {
+  body,
+  .hero {
+    min-height: 100dvh;
+  }
 }
 
 .hero-light {
