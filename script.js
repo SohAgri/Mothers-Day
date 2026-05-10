@@ -44,7 +44,6 @@ function revealOnScroll() {
 }
 
 function animateCursorGlow() {
-  if (!cursorGlow || !window.matchMedia("(pointer: fine)").matches) return;
   window.addEventListener("pointermove", (event) => {
     cursorGlow.style.left = `${event.clientX}px`;
     cursorGlow.style.top = `${event.clientY}px`;
@@ -137,7 +136,9 @@ function init() {
   createAmbient("particle", particleCount, ambientLayer);
   createAmbient("petal", petalCount, petalLayer);
   revealOnScroll();
-  animateCursorGlow();
+  if (cursorGlow && window.matchMedia("(pointer: fine)").matches) {
+    animateCursorGlow();
+  }
   bindEvents();
 }
 
