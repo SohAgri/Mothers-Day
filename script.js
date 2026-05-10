@@ -1,34 +1,14 @@
-const intro = document.getElementById("cinematicIntro");
-const introLines = [...document.querySelectorAll("[data-intro-line]")];
-const enterExperience = document.getElementById("enterExperience");
 const ambientLayer = document.getElementById("ambientLayer");
 const petalLayer = document.getElementById("petalLayer");
 const cursorGlow = document.getElementById("cursorGlow");
 const surpriseButton = document.getElementById("surpriseButton");
 const surpriseMessage = document.getElementById("surpriseMessage");
 const lightFlash = document.getElementById("lightFlash");
-const memoryCards = [...document.querySelectorAll(".memory-card")];
-const lightbox = document.getElementById("lightbox");
-const lightboxImage = document.getElementById("lightboxImage");
-const lightboxCaption = document.getElementById("lightboxCaption");
-const lightboxClose = document.getElementById("lightboxClose");
 const musicToggle = document.getElementById("musicToggle");
 const musicLabel = document.getElementById("musicLabel");
 const bgMusic = document.getElementById("bgMusic");
-const LIGHTBOX_PLACEHOLDER_NOTE = "(placeholder) — replace this image when ready.";
 
 let musicFadeFrame;
-
-function startIntroSequence() {
-  introLines.forEach((line, index) => {
-    setTimeout(() => line.classList.add("visible"), 850 * (index + 1));
-  });
-  setTimeout(() => enterExperience.classList.add("visible"), 850 * (introLines.length + 1));
-}
-
-function closeIntro() {
-  intro.classList.add("hidden");
-}
 
 function createAmbient(type, count, layer) {
   const fragment = document.createDocumentFragment();
@@ -104,32 +84,6 @@ function triggerSurprise() {
   setTimeout(() => lightFlash.classList.remove("active"), 900);
 }
 
-function openLightbox(src, title) {
-  lightboxImage.src = src;
-  lightboxCaption.textContent = `${title} ${LIGHTBOX_PLACEHOLDER_NOTE}`;
-  lightbox.hidden = false;
-  document.body.style.overflow = "hidden";
-}
-
-function closeLightbox() {
-  lightbox.hidden = true;
-  lightboxImage.removeAttribute("src");
-  document.body.style.overflow = "";
-}
-
-function setupMemoryPreview() {
-  memoryCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      openLightbox(card.dataset.src || "", card.dataset.title || "Memory");
-    });
-  });
-
-  lightboxClose.addEventListener("click", closeLightbox);
-  lightbox.addEventListener("click", (event) => {
-    if (event.target === lightbox) closeLightbox();
-  });
-}
-
 function fadeAudio(targetVolume) {
   cancelAnimationFrame(musicFadeFrame);
   const startVolume = bgMusic.volume;
@@ -169,14 +123,8 @@ function toggleMusic() {
 }
 
 function bindEvents() {
-  enterExperience.addEventListener("click", closeIntro);
   surpriseButton.addEventListener("click", triggerSurprise);
   musicToggle.addEventListener("click", toggleMusic);
-  window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !lightbox.hidden) {
-      closeLightbox();
-    }
-  });
 }
 
 function init() {
@@ -185,12 +133,12 @@ function init() {
   const particleCount = reducedMotion || lowPowerDevice ? 18 : 32;
   const petalCount = reducedMotion || lowPowerDevice ? 10 : 18;
 
-  startIntroSequence();
   createAmbient("particle", particleCount, ambientLayer);
   createAmbient("petal", petalCount, petalLayer);
   revealOnScroll();
-  animateCursorGlow();
-  setupMemoryPreview();
+  if (cursorGlow && window.matchMedia("(pointer: fine)").matches) {
+    animateCursorGlow();
+  }
   bindEvents();
 }
 

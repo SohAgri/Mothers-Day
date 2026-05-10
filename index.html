@@ -21,16 +21,6 @@
     <div class="ambient-layer" id="ambientLayer" aria-hidden="true"></div>
     <div class="petal-layer" id="petalLayer" aria-hidden="true"></div>
 
-    <div class="cinematic-intro" id="cinematicIntro" role="dialog" aria-live="polite" hidden>
-      <div class="intro-backdrop"></div>
-      <div class="intro-content">
-        <p class="intro-line" data-intro-line="1">Some people call her mother...</p>
-        <p class="intro-line" data-intro-line="2">I call her my world.</p>
-        <h1 class="intro-title" data-intro-line="3">Happy Mother's Day Maa ❤️</h1>
-        <button class="intro-enter" id="enterExperience" type="button">Enter My Tribute</button>
-      </div>
-    </div>
-
     <button class="music-toggle" id="musicToggle" type="button" aria-pressed="false" aria-label="Play background music">
       <span class="music-icon" aria-hidden="true">♪</span>
       <span id="musicLabel">Play Music</span>
@@ -52,7 +42,8 @@
         <h1>Happy Mother's Day Maa ❤️</h1>
         <p>To the woman whose love built my entire world.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#letter">Read My Letter</a>
+          <a class="btn btn-tribute" href="#letter">Enter My Tribute</a>
+          <a class="btn btn-primary" href="#story">Read My Letter</a>
           <a class="btn btn-secondary" href="#memories">Our Memories</a>
           <a class="btn btn-glow" href="#surprise">A Surprise For You</a>
         </div>
@@ -156,14 +147,6 @@
     </main>
 
     <div class="light-flash" id="lightFlash" aria-hidden="true"></div>
-
-    <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" hidden>
-      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close photo view">×</button>
-      <figure>
-        <img id="lightboxImage" alt="Memory preview" />
-        <figcaption id="lightboxCaption"></figcaption>
-      </figure>
-    </div>
 
     <script src="script.js"></script>
   </body>
