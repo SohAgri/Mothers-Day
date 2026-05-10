@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Happy Mother's Day Maa ❤️ | Sohum</title>
+    <title>Happy Mother's Day Mom ❤️ | Sohum</title>
     <meta
       name="description"
-      content="A cinematic Mother's Day tribute from Sohum to his Maa for 2026."
+      content="A cinematic Mother's Day tribute from Sohum to his Mom for 2026."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,27 +25,25 @@
       <span class="music-icon" aria-hidden="true">♪</span>
       <span id="musicLabel">Play Music</span>
     </button>
-    <audio id="bgMusic" preload="none" loop>
-      <!-- Replace with your own instrumental track in assets/audio -->
-      <source src="assets/audio/mother-day-theme.mp3" type="audio/mpeg" />
-    </audio>
 
     <header class="hero section-reveal" id="top">
       <div class="hero-light"></div>
       <nav class="hero-nav">
         <a href="#letter">Read My Letter</a>
-        <a href="#memories">Our Memories</a>
-        <a href="#surprise">A Surprise For You</a>
+        <a href="#memories">Photo Gallery</a>
+        <a href="#surprise">A Surprise</a>
       </nav>
       <div class="hero-content">
         <p class="eyebrow">Mother's Day 2026</p>
-        <h1>Happy Mother's Day Maa ❤️</h1>
-        <p>To the woman whose love built my entire world.</p>
+        <p class="hero-quote">
+          “Some people call her mother...<br />
+          I call her my world.”
+        </p>
+        <h1>Happy Mother's Day Mom ❤️</h1>
+        <p class="hero-subtitle">An elegant tribute to the heart of our home.</p>
         <div class="hero-actions">
-          <a class="btn btn-tribute" href="#letter">Enter My Tribute</a>
-          <a class="btn btn-primary" href="#story">Read My Letter</a>
-          <a class="btn btn-secondary" href="#memories">Our Memories</a>
-          <a class="btn btn-glow" href="#surprise">A Surprise For You</a>
+          <a class="btn btn-tribute btn-glow" href="#letter">Enter My Tribute</a>
+          <a class="btn btn-secondary" href="#memories">View Memories</a>
         </div>
       </div>
     </header>
@@ -66,9 +64,9 @@
 
       <section class="letter section-reveal" id="letter">
         <div class="section-shell">
-          <h2>My Letter To You, Maa</h2>
+          <h2>My Letter To You, Mom</h2>
           <article class="letter-card">
-            <p>Dear Maa,</p>
+            <p>Dear Mom,</p>
             <p>
               I have watched you turn ordinary days into safe homes for me. You noticed when I was silent,
               understood when I could not explain, and stood beside me when life felt heavy.
@@ -82,7 +80,7 @@
               In the hardest times, your words gave me courage to continue.
             </p>
             <p>
-              I may not say it every day, but I love you Maa. Thank you for your patience, your strength,
+              I may not say it every day, but I love you Mom. Thank you for your patience, your strength,
               and the kind of love that asks for nothing and gives everything.
             </p>
             <p>With all my heart,<br />Sohum</p>
@@ -92,61 +90,200 @@
 
       <section class="memories section-reveal" id="memories">
         <div class="section-shell">
-          <h2>Our Memory Album</h2>
+          <h2>Photo Gallery</h2>
           <p class="memories-intro">
-            Placeholder frames are ready. Replace these with real photos in the matching folders anytime.
+            Swipe through every chapter of our memories. Tap any photo to view it full screen.
           </p>
-          <div class="memory-grid">
-            <!-- Replace data-src later with real image paths -->
-            <button class="memory-card portrait" data-src="assets/photos/placeholder.svg" data-title="Childhood Memories">
-              <span>Childhood Memories</span>
-              <small>/assets/photos/childhood</small>
-            </button>
-            <button class="memory-card landscape" data-src="assets/photos/placeholder.svg" data-title="Family Moments">
-              <span>Family Moments</span>
-              <small>/assets/photos/family</small>
-            </button>
-            <button class="memory-card landscape" data-src="assets/photos/placeholder.svg" data-title="Festival Photos">
-              <span>Festival Photos</span>
-              <small>/assets/photos/festivals</small>
-            </button>
-            <button class="memory-card portrait" data-src="assets/photos/placeholder.svg" data-title="Emotional Candid Moments">
-              <span>Emotional Candid Moments</span>
-              <small>/assets/photos/candid</small>
-            </button>
-            <button class="memory-card portrait" data-src="assets/photos/placeholder.svg" data-title="Smiling Portraits">
-              <span>Smiling Portraits</span>
-              <small>/assets/photos/portraits</small>
-            </button>
-            <button class="memory-card landscape" data-src="assets/photos/placeholder.svg" data-title="Daily Life Memories">
-              <span>Daily Life Memories</span>
-              <small>/assets/photos/daily</small>
-            </button>
+
+          <div class="gallery-section">
+            <div class="gallery-header">
+              <h3>Childhood Memories</h3>
+              <span>Swipe →</span>
+            </div>
+            <div class="gallery-row" data-gallery="childhood">
+              <button class="gallery-card" type="button" data-src="IMG-20240224-WA0000.jpg" data-title="Childhood Memories">
+                <img
+                  src="IMG-20240224-WA0000.jpg"
+                  alt="Childhood memory"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+              <button class="gallery-card" type="button" data-src="IMG-20240224-WA0001.jpg" data-title="Childhood Memories">
+                <img
+                  src="IMG-20240224-WA0001.jpg"
+                  alt="Childhood memory"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-section">
+            <div class="gallery-header">
+              <h3>Family Moments</h3>
+              <span>Swipe →</span>
+            </div>
+            <div class="gallery-row" data-gallery="family">
+              <button class="gallery-card" type="button" data-src="IMG-20251230-WA0000.jpg" data-title="Family Moments">
+                <img
+                  src="IMG-20251230-WA0000.jpg"
+                  alt="Family moment"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-section">
+            <div class="gallery-header">
+              <h3>Festival Photos</h3>
+              <span>Swipe →</span>
+            </div>
+            <div class="gallery-row" data-gallery="festivals">
+              <button class="gallery-card" type="button" data-src="IMG-20251230-WA0000.jpg" data-title="Festival Photos">
+                <img
+                  src="IMG-20251230-WA0000.jpg"
+                  alt="Festival memory"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-section">
+            <div class="gallery-header">
+              <h3>Emotional Candid Moments</h3>
+              <span>Swipe →</span>
+            </div>
+            <div class="gallery-row" data-gallery="candid">
+              <button class="gallery-card" type="button" data-src="IMG-20260224-WA0000.jpg" data-title="Emotional Candid Moments">
+                <img
+                  src="IMG-20260224-WA0000.jpg"
+                  alt="Emotional candid moment"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-section">
+            <div class="gallery-header">
+              <h3>Smiling Portraits</h3>
+              <span>Swipe →</span>
+            </div>
+            <div class="gallery-row" data-gallery="portraits">
+              <button class="gallery-card" type="button" data-src="IMG-20260510-WA0000.jpg" data-title="Smiling Portraits">
+                <img
+                  src="IMG-20260510-WA0000.jpg"
+                  alt="Smiling portrait"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+              <button class="gallery-card" type="button" data-src="IMG-20260510-WA0001.jpg" data-title="Smiling Portraits">
+                <img
+                  src="IMG-20260510-WA0001.jpg"
+                  alt="Smiling portrait"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+            </div>
+          </div>
+
+          <div class="gallery-section">
+            <div class="gallery-header">
+              <h3>Daily Life Memories</h3>
+              <span>Swipe →</span>
+            </div>
+            <div class="gallery-row" data-gallery="daily">
+              <button class="gallery-card" type="button" data-src="IMG-20260224-WA0000.jpg" data-title="Daily Life Memories">
+                <img
+                  src="IMG-20260224-WA0000.jpg"
+                  alt="Daily life memory"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
       <section class="surprise section-reveal" id="surprise">
         <div class="section-shell">
-          <h2>A Small Surprise For You</h2>
+          <h2>A Magical Surprise</h2>
+          <p class="memories-intro">Tap below to unlock a heartfelt moment made just for you.</p>
           <button class="btn btn-surprise" id="surpriseButton" type="button">Click For A Surprise ❤️</button>
-          <div class="surprise-message" id="surpriseMessage" aria-live="polite">
-            <p>You are the heart of this family.</p>
-            <p>Thank you for everything Maa ❤️</p>
-          </div>
         </div>
       </section>
 
       <section class="ending section-reveal" id="ending">
         <div class="section-shell">
           <p>No matter how old I become,<br />I will always remain your child ❤️</p>
-          <p>Happy Mother's Day Maa</p>
+          <p>Happy Mother's Day Mom</p>
           <p>With endless love,<br />Your son Sohum ❤️</p>
+          <p class="ending-final">Forever grateful to call you my Mom ❤️</p>
         </div>
       </section>
     </main>
 
-    <div class="light-flash" id="lightFlash" aria-hidden="true"></div>
+    <div class="gallery-modal" id="galleryModal" aria-hidden="true">
+      <div class="gallery-modal__backdrop" data-close="gallery"></div>
+      <div class="gallery-modal__content" role="dialog" aria-modal="true" aria-label="Photo preview">
+        <button class="modal-close" id="galleryClose" type="button" aria-label="Close photo">✕</button>
+        <img id="galleryImage" alt="Gallery preview" />
+        <p id="galleryCaption"></p>
+      </div>
+    </div>
+
+    <div class="surprise-overlay" id="surpriseOverlay" aria-hidden="true">
+      <div class="surprise-backdrop" data-close="surprise"></div>
+      <div class="surprise-panel" role="dialog" aria-modal="true" aria-label="Surprise message">
+        <div class="surprise-petals" id="surprisePetals" aria-hidden="true"></div>
+        <div class="surprise-sparkles" id="surpriseSparkles" aria-hidden="true"></div>
+        <button class="modal-close" id="surpriseClose" type="button" aria-label="Close surprise">Close ✕</button>
+        <div class="surprise-content">
+          <p class="surprise-title">Mom...</p>
+          <p class="surprise-text">
+            You are the heart of this home.<br />
+            Every smile I have began with you.<br />
+            Thank you for every sacrifice.<br />
+            I love you forever ❤️
+          </p>
+
+          <div class="photo-heart" aria-hidden="true">
+            <span class="photo-orbit" style="--x: 35%; --y: 18%;">
+              <img src="IMG-20240224-WA0000.jpg" alt="" loading="lazy" decoding="async" />
+            </span>
+            <span class="photo-orbit" style="--x: 65%; --y: 18%;">
+              <img src="IMG-20240224-WA0001.jpg" alt="" loading="lazy" decoding="async" />
+            </span>
+            <span class="photo-orbit" style="--x: 20%; --y: 45%;">
+              <img src="IMG-20251230-WA0000.jpg" alt="" loading="lazy" decoding="async" />
+            </span>
+            <span class="photo-orbit" style="--x: 80%; --y: 45%;">
+              <img src="IMG-20260510-WA0000.jpg" alt="" loading="lazy" decoding="async" />
+            </span>
+            <span class="photo-orbit" style="--x: 38%; --y: 70%;">
+              <img src="IMG-20260510-WA0001.jpg" alt="" loading="lazy" decoding="async" />
+            </span>
+            <span class="photo-orbit" style="--x: 62%; --y: 70%;">
+              <img src="IMG-20260224-WA0000.jpg" alt="" loading="lazy" decoding="async" />
+            </span>
+            <span class="photo-core" aria-hidden="true">❤</span>
+          </div>
+
+          <button class="btn btn-hug" id="hugButton" type="button">Tap for Hug 🤗</button>
+          <p class="hug-message" id="hugMessage">If I could, I would hug you forever Mom ❤️</p>
+        </div>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>
